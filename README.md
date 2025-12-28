@@ -24,16 +24,44 @@ Perfect for anime fans, manga readers, and Japanese language learners who encoun
 
 ## 📸 Screenshots
 
-<!-- Add your screenshots here -->
-<!-- Example: ![Translation Popup](screenshots/popup-example.png) -->
-<!-- Example: ![Context Menu](screenshots/context-menu.png) -->
-
-![Translation Popup](translation-popup.png)
-![Translation Popup](translation-popup2.png)
-![Context Menu Option](context-menu.png)
-![High Confidence](high-confidence-example.png)
-![Moderate Confidence](moderate-confidence-example.png)
-![Low Confidence](low-confidence-example.png)
+<table>
+  <tr>
+    <td width="50%">
+      <h3>🎯 Translation in Action</h3>
+      <img src="translation-popup.png" alt="Frieren translation popup">
+      <p><em>Translating "Sousou no Frieren" - shows Hiragana and English</em></p>
+    </td>
+    <td width="50%">
+      <h3>⚔️ Attack on Titan</h3>
+      <img src="translation-popup2.png" alt="Shingeki no Kyojin translation">
+      <p><em>Anime title translation with confidence indicator</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>🖱️ Right-Click Menu</h3>
+      <img src="context-menu.png" alt="Context menu showing Translate option">
+      <p><em>Simply right-click any Romaji text to translate</em></p>
+    </td>
+    <td>
+      <h3>🟢 High Confidence</h3>
+      <img src="high-confidence-example.png" alt="High confidence translation">
+      <p><em>Green dot indicates highly accurate translation</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>🟡 Medium Confidence</h3>
+      <img src="moderate-confidence-example.png" alt="Medium confidence with alternatives">
+      <p><em>Yellow dot shows multiple possible meanings</em></p>
+    </td>
+    <td>
+      <h3>🔴 Low Confidence</h3>
+      <img src="low-confidence-example.png" alt="Low confidence translation">
+      <p><em>Red dot warns of uncertain translation</em></p>
+    </td>
+  </tr>
+</table>
 
 ---
 
@@ -282,9 +310,8 @@ SOFTWARE.
 
 ## 📧 Contact
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/romaji-translator/issues)
-- **Email**: your.email@example.com
-- **Twitter**: @yourusername
+- **Issues**: [GitHub Issues](https://github.com/p4ck3ts3nd3r/romaji-translator/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/p4ck3ts3nd3r/romaji-translator/discussions)
 
 ---
 
@@ -294,7 +321,6 @@ If you find this extension useful:
 - ⭐ Star this repository
 - 🐛 Report bugs and suggest features
 - 📢 Share with friends who love anime/Japanese content
-- ☕ [Buy me a coffee](https://ko-fi.com/yourusername) (optional)
 
 ---
 

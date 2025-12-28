@@ -28,14 +28,17 @@ Perfect for anime fans, manga readers, and Japanese language learners who encoun
 <!-- Example: ![Translation Popup](screenshots/popup-example.png) -->
 <!-- Example: ![Context Menu](screenshots/context-menu.png) -->
 
+![Translation Popup](translation-popup.png)
+![Translation Popup](translation-popup2.png)
+
 *Screenshots coming soon! For now, here's what it looks like:*
 
 **Translation Popup:**
 ```
 ┌─────────────────────────────────────┐
-│ 🟢  SHINGEKI NO KYOJIN          × │
+│ 🟢  SHINGEKI NO KYOJIN          ×   │
 │                                     │
-│ しんげきのきょじん                   │
+│ しんげきのきょじん                    │
 │                                     │
 │ Attack on Titan                     │
 └─────────────────────────────────────┘

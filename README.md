@@ -28,36 +28,36 @@ Perfect for anime fans, manga readers, and Japanese language learners who encoun
   <tr>
     <td width="50%">
       <h3>🎯 Translation in Action</h3>
-      <img src="Romaji-Translator/screenshots/translation-popup.png" alt="Frieren translation popup">
+      <img src="screenshots/translation-popup.png" alt="Frieren translation popup">
       <p><em>Translating "Sousou no Frieren" - shows Hiragana and English</em></p>
     </td>
     <td width="50%">
       <h3>⚔️ Attack on Titan</h3>
-      <img src="Romaji-Translator/screenshots/translation-popup2.png" alt="Shingeki no Kyojin translation">
+      <img src="screenshots/translation-popup2.png" alt="Shingeki no Kyojin translation">
       <p><em>Anime title translation with confidence indicator</em></p>
     </td>
   </tr>
   <tr>
     <td>
       <h3>🖱️ Right-Click Menu</h3>
-      <img src="Romaji-Translator/screenshots/context-menu.png" alt="Context menu showing Translate option">
+      <img src="screenshots/context-menu.png" alt="Context menu showing Translate option">
       <p><em>Simply right-click any Romaji text to translate</em></p>
     </td>
     <td>
       <h3>🟢 High Confidence</h3>
-      <img src="Romaji-Translator/screenshots/high-confidence-example.png" alt="High confidence translation">
+      <img src="screenshots/high-confidence-example.png" alt="High confidence translation">
       <p><em>Green dot indicates highly accurate translation</em></p>
     </td>
   </tr>
   <tr>
     <td>
       <h3>🟡 Medium Confidence</h3>
-      <img src="Romaji-Translator/screenshots/moderate-confidence-example.png" alt="Medium confidence with alternatives">
+      <img src="screenshots/moderate-confidence-example.png" alt="Medium confidence with alternatives">
       <p><em>Yellow dot shows multiple possible meanings</em></p>
     </td>
     <td>
       <h3>🔴 Low Confidence</h3>
-      <img src="Romaji-Translator/screenshots/low-confidence-example.png" alt="Low confidence translation">
+      <img src="screenshots/low-confidence-example.png" alt="Low confidence translation">
       <p><em>Red dot warns of uncertain translation</em></p>
     </td>
   </tr>

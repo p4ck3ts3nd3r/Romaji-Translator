@@ -31,18 +31,7 @@ Perfect for anime fans, manga readers, and Japanese language learners who encoun
 ![Translation Popup](translation-popup.png)
 ![Translation Popup](translation-popup2.png)
 
-*Screenshots coming soon! For now, here's what it looks like:*
 
-**Translation Popup:**
-```
-┌─────────────────────────────────────┐
-│ 🟢  SHINGEKI NO KYOJIN          ×   │
-│                                     │
-│ しんげきのきょじん                    │
-│                                     │
-│ Attack on Titan                     │
-└─────────────────────────────────────┘
-```
 
 ---
 

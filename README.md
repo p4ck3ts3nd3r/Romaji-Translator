@@ -30,8 +30,10 @@ Perfect for anime fans, manga readers, and Japanese language learners who encoun
 
 ![Translation Popup](translation-popup.png)
 ![Translation Popup](translation-popup2.png)
-
-
+![Context Menu Option](context-menu.png)
+![High Confidence](high-confidence-example.png)
+![Moderate Confidence](moderate-confidence-example.png)
+![Low Confidence](low-confidence-example.png)
 
 ---
 

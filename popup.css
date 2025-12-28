@@ -1,0 +1,307 @@
+/* ============================================================================
+   Romaji Translator - Popup Styles v2.0
+   ============================================================================ */
+
+/* Main popup container */
+.romaji-translator-popup {
+  position: absolute;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border: 2px solid #4285f4;
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 
+    0 10px 40px rgba(0, 0, 0, 0.15),
+    0 2px 10px rgba(0, 0, 0, 0.08);
+  z-index: 2147483647; /* Maximum z-index */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  min-width: 220px;
+  max-width: 400px;
+  animation: romajiPopupFadeIn 0.2s ease-out;
+  box-sizing: border-box;
+}
+
+@keyframes romajiPopupFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Popup content wrapper */
+.romaji-popup-content {
+  position: relative;
+}
+
+/* Loading state */
+.romaji-popup-content.romaji-loading .romaji-hiragana,
+.romaji-popup-content.romaji-loading .romaji-english {
+  color: #9aa0a6;
+  animation: romajiPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes romajiPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Header with original text and confidence */
+.romaji-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 8px;
+  padding-right: 28px; /* Make room for close button */
+}
+
+/* Confidence indicator dot - now on the left */
+.romaji-confidence {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+/* Original romaji text */
+.romaji-original {
+  color: #5f6368;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  opacity: 0.8;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.romaji-confidence-high {
+  background: #34a853;
+  box-shadow: 0 0 4px rgba(52, 168, 83, 0.5);
+}
+
+.romaji-confidence-medium {
+  background: #fbbc04;
+  box-shadow: 0 0 4px rgba(251, 188, 4, 0.5);
+}
+
+.romaji-confidence-low {
+  background: #ea4335;
+  box-shadow: 0 0 4px rgba(234, 67, 53, 0.5);
+}
+
+/* Hiragana display */
+.romaji-hiragana {
+  font-size: 26px;
+  font-weight: 600;
+  color: #202124;
+  margin-bottom: 12px;
+  line-height: 1.4;
+  font-family: 'Yu Gothic', 'Meiryo', 'Hiragino Kaku Gothic Pro', 'Noto Sans JP', sans-serif;
+  word-break: keep-all;
+}
+
+/* English translation */
+.romaji-english {
+  font-size: 15px;
+  color: #1a73e8;
+  border-top: 1px solid #e8eaed;
+  padding-top: 12px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.romaji-english.romaji-error-text {
+  color: #d93025;
+}
+
+/* Alternative meanings section */
+.romaji-alternatives {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px dashed #dadce0;
+}
+
+.romaji-alt-header {
+  font-size: 10px;
+  color: #80868b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.romaji-alt-item {
+  font-size: 13px;
+  color: #5f6368;
+  line-height: 1.6;
+  padding-left: 4px;
+}
+
+/* Close button */
+.romaji-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  background: rgba(0, 0, 0, 0.04);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  color: #5f6368;
+  transition: all 0.15s ease;
+  padding: 0;
+  line-height: 1;
+  font-family: Arial, sans-serif;
+}
+
+.romaji-close:hover {
+  background: rgba(0, 0, 0, 0.08);
+  color: #202124;
+  transform: scale(1.1);
+}
+
+.romaji-close:active {
+  transform: scale(0.95);
+}
+
+.romaji-close:focus {
+  outline: 2px solid #4285f4;
+  outline-offset: 2px;
+}
+
+/* Error state */
+.romaji-popup-content.romaji-error .romaji-english {
+  color: #d93025;
+}
+
+/* ============================================================================
+   Responsive adjustments
+   ============================================================================ */
+
+@media (max-width: 600px) {
+  .romaji-translator-popup {
+    max-width: calc(100vw - 32px);
+    padding: 14px 16px;
+    font-size: 14px;
+  }
+  
+  .romaji-hiragana {
+    font-size: 22px;
+  }
+  
+  .romaji-english {
+    font-size: 14px;
+  }
+  
+  .romaji-alt-item {
+    font-size: 12px;
+  }
+}
+
+/* ============================================================================
+   Dark mode support
+   ============================================================================ */
+
+@media (prefers-color-scheme: dark) {
+  .romaji-translator-popup {
+    background: linear-gradient(135deg, #292a2d 0%, #1f1f23 100%);
+    border-color: #5e97f6;
+    box-shadow: 
+      0 10px 40px rgba(0, 0, 0, 0.5),
+      0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .romaji-original {
+    color: #9aa0a6;
+  }
+  
+  .romaji-hiragana {
+    color: #e8eaed;
+  }
+  
+  .romaji-english {
+    color: #8ab4f8;
+    border-top-color: #3c4043;
+  }
+  
+  .romaji-english.romaji-error-text {
+    color: #f28b82;
+  }
+  
+  .romaji-alternatives {
+    border-top-color: #3c4043;
+  }
+  
+  .romaji-alt-header {
+    color: #9aa0a6;
+  }
+  
+  .romaji-alt-item {
+    color: #bdc1c6;
+  }
+  
+  .romaji-close {
+    background: rgba(255, 255, 255, 0.05);
+    color: #9aa0a6;
+  }
+  
+  .romaji-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #e8eaed;
+  }
+  
+  .romaji-close:focus {
+    outline-color: #8ab4f8;
+  }
+  
+  .romaji-popup-content.romaji-error .romaji-english {
+    color: #f28b82;
+  }
+}
+
+/* ============================================================================
+   High contrast mode support
+   ============================================================================ */
+
+@media (prefers-contrast: high) {
+  .romaji-translator-popup {
+    border-width: 3px;
+  }
+  
+  .romaji-hiragana {
+    font-weight: 700;
+  }
+  
+  .romaji-confidence-high {
+    background: #00a000;
+  }
+  
+  .romaji-confidence-medium {
+    background: #c08000;
+  }
+  
+  .romaji-confidence-low {
+    background: #d00000;
+  }
+}
+
+/* ============================================================================
+   Print styles (hide popup when printing)
+   ============================================================================ */
+
+@media print {
+  .romaji-translator-popup {
+    display: none !important;
+  }
+}

@@ -33,7 +33,7 @@ Perfect for anime fans, manga readers, and Japanese language learners who encoun
     </td>
     <td width="50%">
       <h3>⚔️ Attack on Titan</h3>
-      <img src="translation-popup2.png" alt="Shingeki no Kyojin translation">
+      <img src="Romaji-Translator/screenshots/translation-popup2.png" alt="Shingeki no Kyojin translation">
       <p><em>Anime title translation with confidence indicator</em></p>
     </td>
   </tr>

@@ -1,0 +1,31 @@
+# OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary Files
+*.tmp
+*.temp
+*.log
+
+# Chrome Extension
+*.pem
+*.crx
+*.zip
+
+# Node modules (if you add build tools later)
+node_modules/
+
+# Screenshots (add these manually to a screenshots/ folder)
+# screenshots/
+
+# Personal notes
+NOTES.md
+TODO.md

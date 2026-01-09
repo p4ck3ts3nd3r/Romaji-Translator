@@ -20,6 +20,9 @@ desktop.ini
 *.crx
 *.zip
 
+# Directories
+releases-backup/
+
 # Node modules (if you add build tools later)
 node_modules/
 

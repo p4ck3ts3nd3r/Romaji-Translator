@@ -1,5 +1,10 @@
 # 🎌 Romaji Translator - Chrome Extension
 
+![Version](https://img.shields.io/badge/version-3.0.0-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Chrome Web Store](https://img.shields.io/badge/Chrome%20Web%20Store-Under%20Review-yellow)
+![Stars](https://img.shields.io/github/stars/p4ck3ts3nd3r/Romaji-Translator?style=social)
+
 > Instantly translate Romaji (romanized Japanese) to English with a simple right-click.
 
 Perfect for anime fans, manga readers, and Japanese language learners who encounter Romaji text on YouTube, social media, and websites.

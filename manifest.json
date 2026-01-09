@@ -11,7 +11,8 @@
     "scripting"
   ],
   "host_permissions": [
-    "https://jisho.org/*"
+    "https://jisho.org/*",
+    "https://graphql.anilist.co/*"
   ],
   "background": {
     "service_worker": "background.js"

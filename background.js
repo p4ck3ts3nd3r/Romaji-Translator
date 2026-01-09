@@ -62,7 +62,7 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
 // ============================================================================
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  // Handle translation API requests
+  // Handle translation API requests (Jisho)
   if (request.action === "fetchTranslation") {
     handleJishoRequest(request.query)
       .then(result => sendResponse(result))
@@ -72,6 +72,18 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       }));
     
     // Return true to indicate async response
+    return true;
+  }
+  
+  // Handle AniList API requests (for anime/manga title lookup)
+  if (request.action === "searchAniList") {
+    handleAniListSearch(request.query)
+      .then(result => sendResponse(result))
+      .catch(error => sendResponse({
+        success: false,
+        error: error.message
+      }));
+    
     return true;
   }
   
@@ -85,6 +97,146 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   // Unknown action
   return false;
 });
+
+// ============================================================================
+// AniList GraphQL API Handler
+// ============================================================================
+
+/**
+ * Search AniList for anime/manga titles
+ * @param {string} searchQuery - The romaji title to search for
+ * @returns {Object} API response with title info
+ */
+async function handleAniListSearch(searchQuery) {
+  if (!searchQuery || searchQuery.trim().length === 0) {
+    return { success: false, error: "Empty query" };
+  }
+  
+  // GraphQL query to search for media (anime/manga)
+  const query = `
+    query ($search: String) {
+      Media (search: $search, type: ANIME) {
+        id
+        title {
+          romaji
+          english
+          native
+        }
+        format
+        status
+        synonyms
+      }
+    }
+  `;
+  
+  // Also search manga as a fallback
+  const mangaQuery = `
+    query ($search: String) {
+      Media (search: $search, type: MANGA) {
+        id
+        title {
+          romaji
+          english
+          native
+        }
+        format
+        status
+        synonyms
+      }
+    }
+  `;
+  
+  try {
+    // Try anime first
+    let response = await fetch('https://graphql.anilist.co', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({
+        query: query,
+        variables: { search: searchQuery.trim() }
+      })
+    });
+    
+    let data = await response.json();
+    
+    // If no anime found, try manga
+    if (!data.data?.Media) {
+      response = await fetch('https://graphql.anilist.co', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          query: mangaQuery,
+          variables: { search: searchQuery.trim() }
+        })
+      });
+      
+      data = await response.json();
+    }
+    
+    if (data.data?.Media) {
+      const media = data.data.Media;
+      const romaji = media.title.romaji || '';
+      const nativeTitle = media.title.native || '';
+      let englishTitle = media.title.english || '';
+      const synonyms = media.synonyms || [];
+      
+      // If english field is empty, null, or same as romaji, try to find English in synonyms
+      if (!englishTitle || englishTitle.toLowerCase() === romaji.toLowerCase()) {
+        // Look for an English synonym (contains only ASCII/Latin characters)
+        const englishSynonym = synonyms.find(s => {
+          // Check if the synonym is primarily English (Latin characters)
+          return s && /^[a-zA-Z0-9\s\-:!?'",.\(\)]+$/.test(s) && s.length > 3;
+        });
+        
+        if (englishSynonym) {
+          englishTitle = englishSynonym;
+        }
+      }
+      
+      // If still no good English title, check if any synonym looks like a proper English title
+      if (!englishTitle || englishTitle === romaji) {
+        // Try to find "The ...", "A ...", or other English patterns
+        const betterEnglish = synonyms.find(s => 
+          s && (/^(The|A|An)\s/i.test(s) || /\s(of|the|and|in|at|to|for)\s/i.test(s))
+        );
+        if (betterEnglish) {
+          englishTitle = betterEnglish;
+        }
+      }
+      
+      return {
+        success: true,
+        data: {
+          id: media.id,
+          romaji: romaji,
+          english: englishTitle || romaji,  // Fall back to romaji if no English
+          native: nativeTitle,  // Japanese title
+          format: media.format,
+          status: media.status,
+          synonyms: synonyms
+        }
+      };
+    }
+    
+    return {
+      success: false,
+      error: "No results found"
+    };
+    
+  } catch (error) {
+    console.error("AniList API error:", error);
+    return {
+      success: false,
+      error: error.message || "AniList API request failed"
+    };
+  }
+}
 
 // ============================================================================
 // Jisho.org API Handler

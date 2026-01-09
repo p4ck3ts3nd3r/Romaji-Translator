@@ -987,6 +987,67 @@ async function queryJishoAPI(query) {
 }
 
 /**
+ * Search AniList API for anime/manga titles
+ * @param {string} query - Search query (romaji title)
+ * @returns {Object} AniList result or null
+ */
+async function searchAniList(query) {
+  // Check cache first
+  const cacheKey = 'anilist:' + query.toLowerCase();
+  const cached = getCachedTranslation(cacheKey);
+  if (cached) {
+    return cached;
+  }
+  
+  try {
+    const response = await chrome.runtime.sendMessage({
+      action: "searchAniList",
+      query: query
+    });
+    
+    if (response && response.success) {
+      setCachedTranslation(cacheKey, response);
+      return response;
+    }
+    return null;
+  } catch (error) {
+    console.error("AniList API error:", error);
+    return null;
+  }
+}
+
+/**
+ * Calculate similarity score between two strings (0-1)
+ * Used to verify AniList results match the search query
+ */
+function similarityScore(str1, str2) {
+  if (!str1 || !str2) return 0;
+  
+  const s1 = str1.toLowerCase().trim();
+  const s2 = str2.toLowerCase().trim();
+  
+  if (s1 === s2) return 1;
+  
+  // Check if one contains the other
+  if (s1.includes(s2) || s2.includes(s1)) {
+    return 0.8;
+  }
+  
+  // Simple word overlap score
+  const words1 = s1.split(/\s+/);
+  const words2 = s2.split(/\s+/);
+  
+  let matches = 0;
+  for (const w1 of words1) {
+    if (words2.some(w2 => w2.includes(w1) || w1.includes(w2))) {
+      matches++;
+    }
+  }
+  
+  return matches / Math.max(words1.length, words2.length);
+}
+
+/**
  * Format Jisho API results into readable translation
  * Includes multiple meanings for ambiguous words
  */
@@ -1135,7 +1196,7 @@ async function translateRomaji(romajiText) {
   const normalizedInput = romajiText.trim();
   
   // =========================================================================
-  // STEP 1: Check if this is a known title/proper name FIRST
+  // STEP 1: Check if this is a known title/proper name FIRST (static db)
   // =========================================================================
   const knownTitle = checkKnownTitle(normalizedInput);
   if (knownTitle) {
@@ -1151,15 +1212,46 @@ async function translateRomaji(romajiText) {
   }
   
   // =========================================================================
-  // STEP 2: Check for capitalization (likely a proper name)
+  // STEP 1.5: Try AniList API for anime/manga title lookup
   // =========================================================================
+  // Only try AniList if it looks like a title (has capitalization or multiple words)
   const hasCapitalization = /[A-Z]/.test(romajiText);
-  const looksLikeTitle = hasCapitalization && romajiText.split(/\s+/).some(word => 
-    word.length > 0 && word[0] === word[0].toUpperCase()
-  );
+  const hasMultipleWords = romajiText.trim().split(/\s+/).length >= 2;
+  const looksLikeTitle = hasCapitalization || hasMultipleWords;
+  
+  if (looksLikeTitle) {
+    try {
+      const anilistResult = await searchAniList(normalizedInput);
+      if (anilistResult && anilistResult.success) {
+        const data = anilistResult.data;
+        // Check if the romaji title is a close match to what user searched
+        const searchLower = normalizedInput.toLowerCase();
+        const romajiLower = (data.romaji || '').toLowerCase();
+        
+        // If it's a reasonable match (contains the search term or vice versa)
+        if (romajiLower.includes(searchLower) || 
+            searchLower.includes(romajiLower) ||
+            similarityScore(searchLower, romajiLower) > 0.6) {
+          return {
+            romaji: data.romaji || normalizedInput,
+            hiragana: data.native || '',  // Native Japanese title
+            english: data.english || data.romaji || 'No English title available',
+            tokens: [],
+            confidence: 0.95,
+            source: 'anilist',
+            titleType: (data.format || 'anime').toLowerCase(),
+            anilistId: data.id
+          };
+        }
+      }
+    } catch (error) {
+      console.log("AniList lookup failed, continuing with normal translation:", error);
+      // Continue with normal translation if AniList fails
+    }
+  }
   
   // =========================================================================
-  // STEP 3: Normal tokenization and translation
+  // STEP 2: Normal tokenization and translation
   // =========================================================================
   const tokens = tokenizeRomaji(normalizedInput);
   

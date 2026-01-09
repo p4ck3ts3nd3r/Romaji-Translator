@@ -328,6 +328,7 @@ SOFTWARE.
 
 - **Issues**: [GitHub Issues](https://github.com/p4ck3ts3nd3r/romaji-translator/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/p4ck3ts3nd3r/romaji-translator/discussions)
+- **Support Email**: Romaji-Translator-Support@proton.me
 
 ---
 

@@ -1,11 +1,10 @@
 {
   "manifest_version": 3,
   "name": "Romaji Translator",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Translate Romaji text to English with context menu - featuring smart word boundary detection and multiple meaning support",
   "permissions": [
     "contextMenus",
-    "storage",
     "activeTab",
     "alarms",
     "scripting"

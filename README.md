@@ -1,6 +1,6 @@
 # 🎌 Romaji Translator - Chrome Extension
 
-![Version](https://img.shields.io/badge/version-3.0.0-blue)
+![Version](https://img.shields.io/badge/version-3.0.1-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Chrome Web Store](https://img.shields.io/badge/Chrome%20Web%20Store-Under%20Review-yellow)
 ![Stars](https://img.shields.io/github/stars/p4ck3ts3nd3r/Romaji-Translator?style=social)

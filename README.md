@@ -94,6 +94,7 @@ Perfect for anime fans, manga readers, and Japanese language learners who encoun
 
 ## 📢 Full Chrome Web Store URL:
 https://chromewebstore.google.com/detail/romaji-translator/ebapgedeinojfigmkliohfaplfihedlh
+
 ---
 
 ## 📖 How to Use

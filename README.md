@@ -2,7 +2,9 @@
 
 ![Version](https://img.shields.io/badge/version-3.0.1-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
-![Chrome Web Store](https://img.shields.io/badge/Chrome%20Web%20Store-Under%20Review-yellow)
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/ebapgedeinojfigmkliohfaplfihedlh?label=Chrome%20Web%20Store&color=success)](https://chromewebstore.google.com/detail/ebapgedeinojfigmkliohfaplfihedlh)
+[![Users](https://img.shields.io/chrome-web-store/users/ebapgedeinojfigmkliohfaplfihedlh?label=Users)](https://chromewebstore.google.com/detail/ebapgedeinojfigmkliohfaplfihedlh)
+[![Rating](https://img.shields.io/chrome-web-store/rating/ebapgedeinojfigmkliohfaplfihedlh?label=Rating)](https://chromewebstore.google.com/detail/ebapgedeinojfigmkliohfaplfihedlh)
 ![Stars](https://img.shields.io/github/stars/p4ck3ts3nd3r/Romaji-Translator?style=social)
 
 > Instantly translate Romaji (romanized Japanese) to English with a simple right-click.
@@ -73,30 +75,28 @@ Perfect for anime fans, manga readers, and Japanese language learners who encoun
 
 ## 🚀 Installation
 
-### Option 1: Manual Installation (Developer Mode)
+### Option 1: Chrome Web Store (Recommended) ⭐
+
+**[📥 Install from Chrome Web Store](https://chromewebstore.google.com/detail/ebapgedeinojfigmkliohfaplfihedlh)**
+
+1. Click the link above
+2. Click "Add to Chrome"
+3. Done! The extension is now active
+
+### Option 2: Manual Installation (Developer Mode)
 
 1. **Download this repository**
    - Click the green "Code" button above
    - Select "Download ZIP"
    - Extract the ZIP file to a folder
 
-2. **Generate Icons** (if not included)
-   - Open `generate-icons.html` in your browser
-   - Download all three icons (icon16.png, icon48.png, icon128.png)
-   - Create an `icons/` folder in the extension directory
-   - Move the icon files into the `icons/` folder
+---
 
-3. **Load the extension in Chrome**
-   - Open Chrome and go to `chrome://extensions/`
-   - Enable "Developer mode" (toggle in top-right corner)
-   - Click "Load unpacked"
-   - Select the extracted `romaji-translator` folder
-   - Done! The extension is now active
+## 📢 Your Full Chrome Web Store URL:
 
-### Option 2: Chrome Web Store (Coming Soon!)
-
-*This extension will be published to the Chrome Web Store soon. Check back later!*
-
+**Use this everywhere:**
+```
+https://chromewebstore.google.com/detail/romaji-translator/ebapgedeinojfigmkliohfaplfihedlh
 ---
 
 ## 📖 How to Use
